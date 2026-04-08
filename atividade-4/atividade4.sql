@@ -24,8 +24,6 @@ insert into autor(nome, ano_nascimento, ano_morte, apresentacao) values(
     "Autor da serie de livros de Senhor dos Aneis e do universo da Terra Média"
 );
 
-select * from livro;
-
 insert into livro(id_usuario, id_autor, id_editora, id_categoria, titulo, ano_publicacao) values (
 	1, 
     1,
@@ -52,6 +50,12 @@ insert into categoria(nome, descricao) values(
 	"Filosofia",
     "Livros com o tema de filosofia"
 );
+
+select * from livro 
+where id_autor = (select id_autor from autor where nome = 'J.K. Rowling');
+
+select * from livro 
+where id_categoria = (select id_categoria from categoria where nome = 'Filosofia');
 
 update categoria set nome = "Censurado" where nome = "Filosofia";
 
